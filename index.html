@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrutura de Dados - Módulo II - Prof. William Mendes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Estrutura de Dados - Módulo II</h1>
+        <h2>Prof. William Mendes</h2>
+        <h3>Curso de Análise e Desenvolvimento de Sistemas - EDUFOR</h3>
+        <nav>
+            <ul>
+                <li><a href="#teoria">📚 Teoria</a></li>
+                <li><a href="#simulacao">🎮 Simulação</a></li>
+                <li><a href="#registros">📋 Registros</a></li>
+                <li><a href="#vetores-registros">📊 Vetores de Registros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Painel Teórico - Largura total -->
+        <section id="teoria" class="full-width-section">
+            <h2>📚 Painel Teórico</h2>
+            
+            <div class="theory-content">
+                <div class="theory-section">
+                    <h3>💡 Dicas Contextuais</h3>
+                    
+                    <div class="tip-box" id="tipBox">
+                        <p><strong>Bem-vindo ao Simulador!</strong></p>
+                        <p>Comece definindo uma entidade no simulador abaixo. Um <strong>registro</strong> é uma estrutura que agrupa dados heterogêneos (diferentes tipos) sob um único nome.</p>
+                    </div>
+                </div>
+
+                <div class="theory-section">
+                    <h3>📚 Conceitos Fundamentais</h3>
+                    
+                    <div class="concepts-grid">
+                        <div class="concept-box">
+                            <h4>O que é um Registro?</h4>
+                            <p>Um registro (struct) é uma estrutura de dados heterogênea que permite agrupar diferentes tipos de dados relacionados sob um único nome, formando uma unidade lógica coesa.</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Vetor vs Vetor de Registros</h4>
+                            <p><strong>Analogia:</strong> Pense em uma planilha - cada linha é um registro, cada coluna é um campo. Um vetor simples seria apenas uma coluna, enquanto um vetor de registros é a planilha completa.</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Boas Práticas</h4>
+                            <ul>
+                                <li><strong>Nomeação clara:</strong> Use nomes descritivos para entidades e atributos</li>
+                                <li><strong>Modularização:</strong> Separe responsabilidades (validação, CRUD, UI)</li>
+                                <li><strong>Validação:</strong> Sempre valide tipos e restrições</li>
+                            </ul>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Quando usar Registros?</h4>
+                            <p>Use registros quando precisar agrupar dados relacionados que pertencem logicamente à mesma entidade, em vez de usar múltiplas variáveis ou vetores separados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Designer de Registro - Largura total -->
+        <section id="simulacao" class="full-width-section">
+            <h2>A. Designer de Registro</h2>
+            
+            <div class="designer-content">
+                <div class="designer-form">
+                    <div class="form-group">
+                        <label for="entityName">Nome da Entidade:</label>
+                        <input type="text" id="entityName" placeholder="Ex: Aluno, Produto, Paciente">
+                    </div>
+
+                    <h3>Atributos:</h3>
+                    <div class="attributes-container">
+                        <table id="attributesTable">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Tipo</th>
+                                    <th>Restrições</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attributesBody">
+                                <!-- Linhas dinâmicas serão adicionadas aqui -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button id="addAttributeBtn" class="btn btn-secondary">+ Adicionar Atributo</button>
+                        <button id="generateSimulatorBtn" class="btn btn-primary" disabled>Gerar Simulador</button>
+                    </div>
+                </div>
+
+                <!-- Operações CRUD -->
+                <div class="crud-container" id="crudPanel" style="display: none;">
+                    <h3>Operações / CRUD</h3>
+                    
+                    <div class="crud-form-container">
+                        <form id="recordForm">
+                            <div id="dynamicFields">
+                                <!-- Campos serão gerados dinamicamente -->
+                            </div>
+                            <div class="button-group">
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <button type="button" id="updateBtn" class="btn btn-warning" style="display: none;">Atualizar</button>
+                                <button type="button" id="cancelBtn" class="btn btn-secondary" style="display: none;">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="search-container">
+                        <h4>Buscar:</h4>
+                        <div class="search-controls">
+                            <select id="searchField">
+                                <option value="">Selecione um campo</option>
+                            </select>
+                            <input type="text" id="searchValue" placeholder="Valor a buscar">
+                            <button id="searchBtn" class="btn btn-secondary">Buscar</button>
+                            <button id="clearSearchBtn" class="btn btn-secondary">Limpar</button>
+                        </div>
+                    </div>
+
+                    <div class="list-container">
+                        <h4>Lista de Registros:</h4>
+                        <div class="list-controls">
+                            <input type="text" id="filterInput" placeholder="Filtrar registros...">
+                            <button id="clearAllBtn" class="btn btn-danger">Limpar Todos</button>
+                            <button id="exportJsonBtn" class="btn btn-secondary">Exportar JSON</button>
+                            <button id="exportCsvBtn" class="btn btn-secondary">Exportar CSV</button>
+                            <input type="file" id="importFile" accept=".json,.csv" style="display: none;">
+                            <button id="importBtn" class="btn btn-secondary">Importar</button>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table id="recordsTable">
+                                <thead id="recordsTableHead">
+                                    <!-- Cabeçalhos serão gerados dinamicamente -->
+                                </thead>
+                                <tbody id="recordsTableBody">
+                                    <!-- Registros serão listados aqui -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="pagination">
+                            <button id="prevPageBtn" class="btn btn-secondary">Anterior</button>
+                            <span id="pageInfo">Página 1 de 1</span>
+                            <button id="nextPageBtn" class="btn btn-secondary">Próxima</button>
+                        </div>
+                    </div>
+
+                    <div class="memory-container">
+                        <h4>Memória Simulada:</h4>
+                        <button id="toggleMemoryBtn" class="btn btn-secondary">Mostrar/Ocultar JSON</button>
+                        <pre id="memoryDisplay" style="display: none;"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Registros - Largura total -->
+        <section id="registros" class="full-width-section">
+            <h2>📋 Registros (Structs)</h2>
+            
+            <div class="content-grid">
+                <div class="content-text">
+                    <h3>3.1. Estrutura e Componentes</h3>
+                    <p>Um registro é composto por um conjunto de <em>campos</em> (também chamados de <em>membros</em> ou <em>atributos</em>), onde cada campo possui um nome único e um tipo de dado específico. A beleza dos registros reside na sua capacidade de combinar dados de naturezas distintas em uma única entidade.</p>
+
+                    <div class="highlight-box">
+                        <h4>Características dos Registros:</h4>
+                        <ul>
+                            <li><strong>Heterogeneidade:</strong> Permitem armazenar dados de diferentes tipos em uma única estrutura.</li>
+                            <li><strong>Organização Lógica:</strong> Agrupam informações que pertencem logicamente a uma mesma entidade.</li>
+                            <li><strong>Acesso por Nome:</strong> Os campos são acessados pelo seu nome, melhorando a clareza do código.</li>
+                        </ul>
+                    </div>
+
+                    <h3>3.2. Exemplo de Registro</h3>
+                    <p>Vamos considerar um exemplo prático para ilustrar o conceito de registro. Suponha que queremos representar as informações de um estudante:</p>
+                </div>
+
+                <div class="code-examples">
+                    <h4>Exemplos de Código:</h4>
+                    <div class="code-tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" data-tab="pseudocodigo">Pseudocódigo</button>
+                            <button class="tab-btn" data-tab="python">Python</button>
+                            <button class="tab-btn" data-tab="java">Java</button>
+                            <button class="tab-btn" data-tab="c">C</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="pseudocodigo">
+                            <pre class="code-block">
+Registro Estudante:
+    nome: cadeia
+    matricula: inteiro
+    curso: cadeia
+    media_geral: real
+    data_nascimento: data
+
+// Declaração e uso
+var meu_estudante: Estudante
+meu_estudante.nome ← "Maria Silva"
+meu_estudante.matricula ← 12345
+meu_estudante.curso ← "Engenharia de Software"
+meu_estudante.media_geral ← 8.75
+meu_estudante.data_nascimento ← "2003-05-10"
+                            </pre>
+                        </div>
+                        
+                        <div class="tab-content" id="python">
+                            <pre class="code-block">
+from dataclasses import dataclass
+from datetime import date
+
+@dataclass
+class Estudante:
+    nome: str
+    matricula: int
+    curso: str
+    media_geral: float
+    data_nascimento: date
+
+# Declaração e uso
+meu_estudante = Estudante(
+    nome="Maria Silva",
+    matricula=12345,
+    curso="Engenharia de Software",
+    media_geral=8.75,
+    data_nascimento=date(2003, 5, 10)
+)
+
+print(f"Nome: {meu_estudante.nome}")
+print(f"Matrícula: {meu_estudante.matricula}")
+                            </pre>
+                        </div>
+                        
+                        <div class="tab-content" id="java">
+                            <pre class="code-block">
+import java.time.LocalDate;
+
+public class Estudante {
+    private String nome;
+    private int matricula;
+    private String curso;
+    private double mediaGeral;
+    private LocalDate dataNascimento;
+    
+    // Construtor
+    public Estudante(String nome, int matricula, String curso, 
+                    double mediaGeral, LocalDate dataNascimento) {
+        this.nome = nome;
+        this.matricula = matricula;
+        this.curso = curso;
+        this.mediaGeral = mediaGeral;
+        this.dataNascimento = dataNascimento;
+    }
+    
+    // Getters e Setters
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    // ... outros getters e setters
+}
+
+// Uso
+Estudante meuEstudante = new Estudante(
+    "Maria Silva", 12345, "Engenharia de Software", 
+    8.75, LocalDate.of(2003, 5, 10)
+);
+                            </pre>
+                        </div>
+                        
+                        <div class="tab-content" id="c">
+                            <pre class="code-block">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Estudante {
+    char nome[100];
+    int matricula;
+    char curso[100];
+    float media_geral;
+    char data_nascimento[11]; // formato: YYYY-MM-DD
+};
+
+int main() {
+    struct Estudante meu_estudante;
+    
+    strcpy(meu_estudante.nome, "Maria Silva");
+    meu_estudante.matricula = 12345;
+    strcpy(meu_estudante.curso, "Engenharia de Software");
+    meu_estudante.media_geral = 8.75;
+    strcpy(meu_estudante.data_nascimento, "2003-05-10");
+    
+    printf("Nome: %s\n", meu_estudante.nome);
+    printf("Matrícula: %d\n", meu_estudante.matricula);
+    printf("Curso: %s\n", meu_estudante.curso);
+    printf("Média: %.2f\n", meu_estudante.media_geral);
+    
+    return 0;
+}
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>3.3. Aplicações e Importância</h3>
+            <div class="applications-grid">
+                <div class="application-item">
+                    <h4>🗄️ Bancos de Dados</h4>
+                    <p>Representam linhas em tabelas, onde cada campo do registro corresponde a uma coluna da tabela.</p>
+                </div>
+                <div class="application-item">
+                    <h4>🎯 Programação Orientada a Objetos</h4>
+                    <p>São a base para a criação de classes e objetos, onde os campos do registro se tornam os atributos da classe.</p>
+                </div>
+                <div class="application-item">
+                    <h4>🔗 Estruturas Complexas</h4>
+                    <p>Podem ser combinados com outras estruturas, como vetores de registros ou listas encadeadas.</p>
+                </div>
+                <div class="application-item">
+                    <h4>🔄 Troca de Dados</h4>
+                    <p>São ideais para empacotar informações que precisam ser passadas entre diferentes partes de um programa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Vetores de Registros - Largura total -->
+        <section id="vetores-registros" class="full-width-section">
+            <h2>📊 Vetores de Registros</h2>
+            
+            <div class="content-grid">
+                <div class="content-text">
+                    <p>A combinação de vetores e registros é uma técnica poderosa para organizar coleções de dados complexos. Um vetor de registros é essencialmente um array onde cada elemento é um registro, permitindo armazenar múltiplas instâncias de uma estrutura de dados heterogênea.</p>
+
+                    <h3>Operações Comuns</h3>
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>Inserção:</strong> Adicionar um novo registro ao vetor.</li>
+                            <li><strong>Busca:</strong> Encontrar um registro específico com base no valor de um de seus campos.</li>
+                            <li><strong>Remoção:</strong> Excluir um registro do vetor.</li>
+                            <li><strong>Atualização:</strong> Modificar os valores dos campos de um registro existente.</li>
+                        </ul>
+                    </div>
+
+                    <h3>Aplicações</h3>
+                    <div class="applications-grid">
+                        <div class="application-item">
+                            <h4>💼 Sistemas de Gerenciamento</h4>
+                            <p>Para armazenar e manipular coleções de objetos ou entidades.</p>
+                        </div>
+                        <div class="application-item">
+                            <h4>🏢 Aplicações Empresariais</h4>
+                            <p>Gerenciamento de clientes, produtos, pedidos, etc.</p>
+                        </div>
+                        <div class="application-item">
+                            <h4>🎮 Simulações</h4>
+                            <p>Modelagem de múltiplos agentes ou elementos com propriedades complexas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-examples">
+                    <h4>Exemplos de Código:</h4>
+                    <div class="code-tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" data-tab="pseudocodigo-vetor">Pseudocódigo</button>
+                            <button class="tab-btn" data-tab="python-vetor">Python</button>
+                            <button class="tab-btn" data-tab="java-vetor">Java</button>
+                            <button class="tab-btn" data-tab="c-vetor">C</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="pseudocodigo-vetor">
+                            <pre class="code-block">
+// Declaração do vetor de registros
+var estudantes: vetor[1..100] de Estudante
+var total_estudantes: inteiro ← 0
+
+// Adicionando estudantes
+total_estudantes ← total_estudantes + 1
+estudantes[total_estudantes].nome ← "Maria Silva"
+estudantes[total_estudantes].matricula ← 12345
+estudantes[total_estudantes].curso ← "Eng. Software"
+estudantes[total_estudantes].media_geral ← 8.75
+
+total_estudantes ← total_estudantes + 1
+estudantes[total_estudantes].nome ← "João Souza"
+estudantes[total_estudantes].matricula ← 67890
+estudantes[total_estudantes].curso ← "Ciência da Computação"
+estudantes[total_estudantes].media_geral ← 9.2
+
+// Buscar estudante por matrícula
+para i de 1 até total_estudantes faça
+    se estudantes[i].matricula = 12345 então
+        escreva("Encontrado: ", estudantes[i].nome)
+    fim_se
+fim_para
+                            </pre>
+                        </div>
+                        
+                        <div class="tab-content" id="python-vetor">
+                            <pre class="code-block">
+from dataclasses import dataclass
+from datetime import date
+from typing import List
+
+@dataclass
+class Estudante:
+    nome: str
+    matricula: int
+    curso: str
+    media_geral: float
+    data_nascimento: date
+
+# Vetor de registros
+estudantes: List[Estudante] = []
+
+# Adicionando estudantes
+estudantes.append(Estudante(
+    nome="Maria Silva",
+    matricula=12345,
+    curso="Engenharia de Software",
+    media_geral=8.75,
+    data_nascimento=date(2003, 5, 10)
+))
+
+estudantes.append(Estudante(
+    nome="João Souza",
+    matricula=67890,
+    curso="Ciência da Computação",
+    media_geral=9.2,
+    data_nascimento=date(2002, 11, 20)
+))
+
+# Buscar estudante por matrícula
+def buscar_por_matricula(matricula: int) -> Estudante:
+    for estudante in estudantes:
+        if estudante.matricula == matricula:
+            return estudante
+    return None
+
+# Listar todos ordenados por média
+estudantes_ordenados = sorted(estudantes, 
+                            key=lambda x: x.media_geral, 
+                            reverse=True)
+
+for estudante in estudantes_ordenados:
+    print(f"{estudante.nome}: {estudante.media_geral}")
+                            </pre>
+                        </div>
+                        
+                        <div class="tab-content" id="java-vetor">
+                            <pre class="code-block">
+import java.time.LocalDate;
+import java.util.*;
+
+public class GerenciadorEstudantes {
+    private List&lt;Estudante&gt; estudantes;
+    
+    public GerenciadorEstudantes() {
+        this.estudantes = new ArrayList&lt;&gt;();
+    }
+    
+    // Adicionar estudante
+    public void adicionarEstudante(Estudante estudante) {
+        estudantes.add(estudante);
+    }
+    
+    // Buscar por matrícula
+    public Estudante buscarPorMatricula(int matricula) {
+        for (Estudante estudante : estudantes) {
+            if (estudante.getMatricula() == matricula) {
+                return estudante;
+            }
+        }
+        return null;
+    }
+    
+    // Listar ordenados por média
+    public List&lt;Estudante&gt; listarPorMedia() {
+        List&lt;Estudante&gt; copia = new ArrayList&lt;&gt;(estudantes);
+        copia.sort((e1, e2) -> 
+            Double.compare(e2.getMediaGeral(), e1.getMediaGeral()));
+        return copia;
+    }
+    
+    // Remover estudante
+    public boolean removerPorMatricula(int matricula) {
+        return estudantes.removeIf(e -> e.getMatricula() == matricula);
+    }
+    
+    public static void main(String[] args) {
+        GerenciadorEstudantes gerenciador = new GerenciadorEstudantes();
+        
+        gerenciador.adicionarEstudante(new Estudante(
+            "Maria Silva", 12345, "Eng. Software", 8.75,
+            LocalDate.of(2003, 5, 10)
+        ));
+        
+        gerenciador.adicionarEstudante(new Estudante(
+            "João Souza", 67890, "Ciência da Computação", 9.2,
+            LocalDate.of(2002, 11, 20)
+        ));
+        
+        // Buscar e exibir
+        Estudante encontrado = gerenciador.buscarPorMatricula(12345);
+        if (encontrado != null) {
+            System.out.println("Encontrado: " + encontrado.getNome());
+        }
+    }
+}
+                            </pre>
+                        </div>
+                        
+                        <div class="tab-content" id="c-vetor">
+                            <pre class="code-block">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define MAX_ESTUDANTES 100
+
+struct Estudante {
+    char nome[100];
+    int matricula;
+    char curso[100];
+    float media_geral;
+    char data_nascimento[11];
+};
+
+struct VetorEstudantes {
+    struct Estudante estudantes[MAX_ESTUDANTES];
+    int total;
+};
+
+// Adicionar estudante
+void adicionar_estudante(struct VetorEstudantes* vetor, 
+                        struct Estudante estudante) {
+    if (vetor-&gt;total &lt; MAX_ESTUDANTES) {
+        vetor-&gt;estudantes[vetor-&gt;total] = estudante;
+        vetor-&gt;total++;
+    }
+}
+
+// Buscar por matrícula
+struct Estudante* buscar_por_matricula(struct VetorEstudantes* vetor, 
+                                      int matricula) {
+    for (int i = 0; i &lt; vetor-&gt;total; i++) {
+        if (vetor-&gt;estudantes[i].matricula == matricula) {
+            return &amp;vetor-&gt;estudantes[i];
+        }
+    }
+    return NULL;
+}
+
+// Listar todos
+void listar_estudantes(struct VetorEstudantes* vetor) {
+    printf("Lista de Estudantes:\n");
+    for (int i = 0; i &lt; vetor-&gt;total; i++) {
+        printf("%d. %s (Mat: %d) - Média: %.2f\n", 
+               i+1, 
+               vetor-&gt;estudantes[i].nome,
+               vetor-&gt;estudantes[i].matricula,
+               vetor-&gt;estudantes[i].media_geral);
+    }
+}
+
+int main() {
+    struct VetorEstudantes vetor = {.total = 0};
+    
+    // Criar estudantes
+    struct Estudante e1 = {"Maria Silva", 12345, "Eng. Software", 8.75, "2003-05-10"};
+    struct Estudante e2 = {"João Souza", 67890, "Ciência da Computação", 9.2, "2002-11-20"};
+    
+    // Adicionar ao vetor
+    adicionar_estudante(&amp;vetor, e1);
+    adicionar_estudante(&amp;vetor, e2);
+    
+    // Listar todos
+    listar_estudantes(&amp;vetor);
+    
+    // Buscar específico
+    struct Estudante* encontrado = buscar_por_matricula(&amp;vetor, 12345);
+    if (encontrado != NULL) {
+        printf("Encontrado: %s\n", encontrado-&gt;nome);
+    }
+    
+    return 0;
+}
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bibliografia -->
+        <section id="bibliografia" class="full-width-section">
+            <h2>📖 Bibliografia</h2>
+            <div class="bibliography-content">
+                <ul>
+                    <li>SAGAH. Estrutura de Dados. Porto Alegre: SAGAH, 2018.</li>
+                    <li>CORMEN, T. H. et al. Algoritmos: Teoria e Prática. 3. ed. Rio de Janeiro: Elsevier, 2012.</li>
+                    <li>ZIVIANI, N. Projeto de Algoritmos com Implementações em Pascal e C. 3. ed. São Paulo: Cengage Learning, 2011.</li>
+                    <li>GOODRICH, M. T.; TAMASSIA, R. Estruturas de Dados e Algoritmos em Java. 5. ed. Porto Alegre: Bookman, 2013.</li>
+                    <li>SZWARCFITER, J. L.; MARKENZON, L. Estruturas de Dados e seus Algoritmos. 3. ed. Rio de Janeiro: LTC, 2010.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast para mensagens -->
+    <div id="toast" class="toast"></div>
+
+    <footer>
+        <p>&copy; 2025 Prof. William Mendes. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
