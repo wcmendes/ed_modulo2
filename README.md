@@ -46,7 +46,7 @@ O projeto conta com explicações teóricas, exemplos em diversas linguagens (Ps
 
 ## 🧪 Como Acessar
 
-1. Acesse o simulador online através do link: [https://pghmhkze.manus.space](https://pghmhkze.manus.space)
+1. Acesse o simulador online através do link: [wcmendes.github.io/ed_modulo2/)
 2. Ou escaneie o QR Code abaixo:
 
 ![QR Code para acesso ao simulador](assets/qrcode.png)
