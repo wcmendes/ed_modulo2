@@ -49,6 +49,8 @@ O projeto conta com explicações teóricas, exemplos em diversas linguagens (Ps
 1. Acesse o simulador online através do link: [wcmendes.github.io/ed_modulo2/)
 2. Ou escaneie o QR Code abaixo:
 
+<img width="450" height="450" alt="qrcode_wcmendes github io" src="https://github.com/user-attachments/assets/8627d4bc-1ab2-43be-b512-6a55240b23e3" />
+
 ---
 
 ## 🎓 Público-Alvo
