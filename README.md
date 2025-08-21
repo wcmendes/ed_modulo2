@@ -1,4 +1,4 @@
-# 📘 Estrutura de Dados - Módulo II
+# Estrutura de Dados - Módulo II: Registros e Vetores de Registros
 
 Projeto interativo de apoio à disciplina **Estrutura de Dados - Módulo II**, desenvolvido pelo Prof. William Corrêa Mendes.
 
@@ -10,8 +10,6 @@ Oferecer aos alunos uma interface prática e visual para aprendizado dos princip
 - Vetores de Registros (Arrays of Structs)
 
 O projeto conta com explicações teóricas, exemplos em diversas linguagens (Pseudocódigo, Python, Java e C), simulador interativo e designer de registros para experimentação prática.
-
----
 
 ## 🧩 Funcionalidades
 
@@ -34,32 +32,28 @@ O projeto conta com explicações teóricas, exemplos em diversas linguagens (Ps
 - **Exportação/Importação:** Formatos JSON e CSV
 - **Persistência:** Armazenamento local para manter os dados entre sessões
 
----
-
 ## 🛠️ Tecnologias Utilizadas
 
 - HTML5
 - CSS3 (com design responsivo e moderno)
 - JavaScript Puro (sem bibliotecas externas)
 
----
-
-## 🧪 Como Acessar
+## 🚀 Como Acessar/Executar
 
 1. Acesse o simulador online através do link: [wcmendes.github.io/ed_modulo2/)
 2. Ou escaneie o QR Code abaixo:
-
-<img width="450" height="450" alt="qrcode_wcmendes github io" src="https://github.com/user-attachments/assets/8627d4bc-1ab2-43be-b512-6a55240b23e3" />
-
----
 
 ## 🎓 Público-Alvo
 
 Estudantes do curso de Análise e Desenvolvimento de Sistemas, especialmente nas fases introdutórias de estrutura de dados e lógica de programação.
 
-### 📄 Licença
+## 🤝 Contribuições
 
-Material educacional desenvolvido para fins acadêmicos.
+Este projeto foi desenvolvido como material educacional para a disciplina de Estrutura de Dados. Sugestões e melhorias são sempre bem-vindas.
+
+## 📄 Licença e Uso
+
+Este material educacional é desenvolvido para fins acadêmicos. É permitida a reprodução, adaptação e distribuição, desde que seja **dado o devido crédito ao autor**.
 
 ---
 
@@ -69,8 +63,9 @@ Material educacional desenvolvido para fins acadêmicos.
 
 ---
 
-### 🔗 Links Relacionados
+### 🔗 Links dos Repositórios
 
-- [Módulo I - Estruturas Básicas](https://wcmendes.github.io/ed_modulo1/)
-- [Módulo II - Registros e Vetores](https://wcmendes.github.io/ed_modulo2/)
-- [Módulo III - Estruturas Lineares](https://wcmendes.github.io/ed_modulo3/)
+- [Módulo I - Estruturas Básicas](https://github.com/wcmendes/ed_modulo1)
+- [Módulo II - Registros e Vetores](https://github.com/wcmendes/ed_modulo2)
+- [Módulo III - Estruturas Lineares](https://github.com/wcmendes/ed_modulo3)
+- [Torre de Hanoi](https://github.com/wcmendes/hanoi)
