@@ -57,15 +57,20 @@ O projeto conta com explicações teóricas, exemplos em diversas linguagens (Ps
 
 Estudantes do curso de Análise e Desenvolvimento de Sistemas, especialmente nas fases introdutórias de estrutura de dados e lógica de programação.
 
----
+### 📄 Licença
 
-## 🧠 Autor
+Material educacional desenvolvido para fins acadêmicos.
+
+---
 
 **Prof. William Corrêa Mendes**  
+**Currículo Lattes**: [https://lattes.cnpq.br/7726054867638395](https://lattes.cnpq.br/7726054867638395)
+<img align="left" width="200" height="2000" alt="image" src="https://github.com/user-attachments/assets/99e540cd-3106-47c0-8578-95926730b655" />
 
 ---
 
-## 📄 Licença
+### 🔗 Links Relacionados
 
-Este projeto é de uso educacional e não possui fins lucrativos. Distribuição permitida mediante citação do autor.
-
+- [Módulo I - Estruturas Básicas](https://wcmendes.github.io/ed_modulo1/)
+- [Módulo II - Registros e Vetores](https://wcmendes.github.io/ed_modulo2/)
+- [Módulo III - Estruturas Lineares](https://wcmendes.github.io/ed_modulo3/)
