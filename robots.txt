@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wcmendes.github.io/ed_modulo2/sitemap.xml
+
