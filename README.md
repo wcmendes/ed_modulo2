@@ -1,6 +1,6 @@
 # 📘 Estrutura de Dados - Módulo II
 
-Projeto interativo de apoio à disciplina **Estrutura de Dados - Módulo II**, desenvolvido pelo Prof. William Mendes para o curso de Análise e Desenvolvimento de Sistemas da Faculdade EDUFOR.
+Projeto interativo de apoio à disciplina **Estrutura de Dados - Módulo II**, desenvolvido pelo Prof. William Corrêa Mendes.
 
 ## 📌 Objetivo
 
