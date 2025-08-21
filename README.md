@@ -61,8 +61,7 @@ Estudantes do curso de Análise e Desenvolvimento de Sistemas, especialmente nas
 
 ## 🧠 Autor
 
-**Prof. William Mendes**  
-Professor e Coordenador do curso de ADS da Faculdade EDUFOR.
+**Prof. William Corrêa Mendes**  
 
 ---
 
