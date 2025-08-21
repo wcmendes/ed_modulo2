@@ -41,7 +41,9 @@ O projeto conta com explicações teóricas, exemplos em diversas linguagens (Ps
 ## 🚀 Como Acessar/Executar
 
 1. **Acesse o simulador**: [https://wcmendes.github.io/ed_modulo2/](https://wcmendes.github.io/ed_modulo2/)
-2. Leia o conteúdo e interaja com os simuladores.
+2. Navegue entre as seções usando o menu.
+3. Interaja com os simuladores e exemplos interativos.
+
 
 ## 🎓 Público-Alvo
 
